@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 from babel.numbers import format_currency
+import os
 
 sns.set(style='dark')
 
@@ -67,7 +68,8 @@ def create_rfm_df(df):
     return rfm_df
 
 # Load cleaned data
-all_df = pd.read_csv("all_data.csv")
+csv_path = os.path.join(os.path.dirname(__file__), 'all_data.csv')
+all_df = pd.read_csv(csv_path)
 
 datetime_columns = ["order_date", "delivery_date"]
 all_df.sort_values(by="order_date", inplace=True)
